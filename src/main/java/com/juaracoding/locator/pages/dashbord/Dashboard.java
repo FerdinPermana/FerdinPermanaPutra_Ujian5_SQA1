@@ -64,7 +64,7 @@ private WebDriver driver;
 	public void tshirt() {
 		btntshirt.click();
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,1000)");
+		js.executeScript("window.scrollBy(0,800)");
 		Actions action = new Actions(driver);
 		action.moveToElement(btnView2).moveToElement(btnMore2).click().perform();
 		js.executeScript("window.scrollBy(0,300)");
