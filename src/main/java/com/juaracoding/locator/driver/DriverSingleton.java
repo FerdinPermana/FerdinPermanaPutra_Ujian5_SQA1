@@ -9,7 +9,7 @@ public class DriverSingleton {
 	private static WebDriver driver;
 	
 	public DriverSingleton() {
-		instantiate("firefox");
+		instantiate("chrome");
 	}
 	
 	public WebDriver instantiate (String strategy) {
