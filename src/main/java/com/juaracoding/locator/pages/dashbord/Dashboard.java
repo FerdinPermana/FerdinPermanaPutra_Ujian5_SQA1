@@ -21,27 +21,54 @@ private WebDriver driver;
 	@FindBy(css ="#block_top_menu > ul > li:nth-child(2)")
 	private WebElement btndress;
 	
-	@FindBy(css ="#center_column > ul > li.ajax_block_product.col-xs-12.col-sm-6.col-md-4.first-in-line.first-item-of-tablet-line.first-item-of-mobile-line > div > div.right-block > div.button-container > a.button.ajax_add_to_cart_button.btn.btn-default")
-	private WebElement btndressaddcart;
+	@FindBy(xpath = "/html/body/div[1]/div[2]/div/div[3]/div[2]/ul/li[2]/div/div[1]/div/a[1]/img")
+	private WebElement btnView1;
+	
+	@FindBy(xpath="/html/body[1]/div[1]/div[2]/div[1]/div[3]/div[2]/ul/li[2]/div[1]/div[2]/div[2]/a[2]")
+	private WebElement btnMore1;
+	
+	@FindBy(xpath = "//*[@id=\"add_to_cart\"]/button")
+	private WebElement btnAddtoCart1;
+	
+	@FindBy(xpath = "//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/span")
+	private WebElement btnContinue;
 
 	@FindBy(css ="#block_top_menu > ul > li:nth-child(3)")
 	private WebElement btntshirt;
 	
-	@FindBy(css ="#center_column > ul > li > div > div.right-block > div.button-container > a.button.ajax_add_to_cart_button.btn.btn-default")
-	private WebElement btntshirtcart;
+	@FindBy(xpath = "//*[@id=\"center_column\"]/ul/li/div")
+	private WebElement btnView2;
+	
+	@FindBy(xpath = "//*[@id=\"center_column\"]/ul/li/div/div[2]/div[2]/a[2]")
+	private WebElement btnMore2;
+	
+	@FindBy(css="#add_to_cart > button")
+	private WebElement btnAddtoCart2;
+	
+	@FindBy(css="#layer_cart > div.clearfix > div.layer_cart_cart.col-xs-12.col-md-6 > div.button-container > a")
+	private WebElement btnCheckout;
 	
 	
 	public void dress() {
-		btndress.click();
+		WebDriverWait wait = new WebDriverWait(driver, 10);
 		JavascriptExecutor js = (JavascriptExecutor) driver;
+		btndress.click();
 		js.executeScript("window.scrollBy(0,1000)");
-		btndressaddcart.click();
+		Actions action = new Actions(driver);
+		action.moveToElement(btnView1).moveToElement(btnMore1).click().perform();
+		js.executeScript("window.scrollBy(0,300)");
+		btnAddtoCart1.click();
+		btnContinue.click();
 	}
 	
 	public void tshirt() {
 		btntshirt.click();
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,1000)");
-		btntshirtcart.click();
+		Actions action = new Actions(driver);
+		action.moveToElement(btnView2).moveToElement(btnMore2).click().perform();
+		js.executeScript("window.scrollBy(0,300)");
+		btnAddtoCart2.click();
+		btnCheckout.click();
 	}
 }
