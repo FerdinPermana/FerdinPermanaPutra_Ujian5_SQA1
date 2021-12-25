@@ -16,52 +16,39 @@ private WebDriver driver;
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(css ="#layer_cart > div.clearfix > div.layer_cart_cart.col-xs-12.col-md-6 > div.button-container > a > span")
-	private WebElement btncheckout;
 	
-	@FindBy(css ="#center_column > p.cart_navigation.clearfix > a.button.btn.btn-default.standard-checkout.button-medium > span")
-	private WebElement btnsummary;
+	@FindBy(xpath = "//*[@id=\"center_column\"]/p[2]/a[1]") 
+	private WebElement btnCheckoutSum;
 	
-	@FindBy(css ="#center_column > form > div > p > a > span")
-	private WebElement btnnewaddress;
+	@FindBy(xpath = "//*[@id=\"center_column\"]/form/p/button")
+	private WebElement btnCheckoutAddress;
 	
-	@FindBy(css ="#center_column > form > p > button > span")
-	private WebElement btncheckout1;
+	@FindBy(xpath = "//*[@id=\"uniform-cgv\"]")
+	private WebElement btnBoxShip;
 	
-	@FindBy(css ="#cgv")
-	private WebElement btnshipping;
+	@FindBy(xpath = "//*[@id=\"form\"]/p/button")
+	private WebElement btnCheckoutShip;
 	
-	@FindBy(css ="#form > p > button > span")
-	private WebElement btncheckout2;
+	@FindBy(xpath = "//*[@id=\"HOOK_PAYMENT\"]/div[1]/div/p/a")
+	private WebElement btnPayBankWire;
 	
-	@FindBy(css ="#HOOK_PAYMENT > div:nth-child(1) > div")
-	private WebElement btnpaybybank;
-	
-	@FindBy(css ="#HOOK_PAYMENT > div:nth-child(2) > div")
-	private WebElement btnpaybycheck;
-	
-	@FindBy(css ="#cart_navigation > button")
-	private WebElement btnpaymen;
+	@FindBy(xpath = "//*[@id=\"cart_navigation\"]/button")
+	private WebElement btnConfirmPay;
 	
 	
 	public void checkout() {
-		btncheckout.click();
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,1000)");
-		btnsummary.click();
-		JavascriptExecutor ks = (JavascriptExecutor) driver;
-		ks.executeScript("window.scrollBy(0,1000)");
-		btnnewaddress.click();
-		btncheckout1.click();
-		JavascriptExecutor ls = (JavascriptExecutor) driver;
-		ls.executeScript("window.scrollBy(0,1000)");
-		btnshipping.click();
-		btncheckout2.click();
-		JavascriptExecutor os = (JavascriptExecutor) driver;
-		os.executeScript("window.scrollBy(0,1000)");
-		btnpaybybank.click();
-		btnpaybycheck.click();
-		btnpaymen.click();
+		btnCheckoutSum.click();
+		js.executeScript("window.scrollBy(0,800)");
+		btnCheckoutAddress.click();
+		js.executeScript("window.scrollBy(0,500)");
+		btnBoxShip.click();
+		btnCheckoutShip.click();
+		js.executeScript("window.scrollBy(0,800)");
+		btnPayBankWire.click();
+		js.executeScript("window.scrollBy(0,800)");
+		btnConfirmPay.click();
 	}
 
 }
